@@ -28,7 +28,7 @@ def main():
     set_rewards(rewards_1, r_1)
     set_rewards(rewards_2, r_2)
 
-    
+    print(move((2,1), "U"))
     
 
 def set_rewards(rewards, r):
@@ -45,9 +45,9 @@ def choose_random_action():
 
 
 def move(curr_state, action):
-    next_state = curr_state
+    next_state = copy.deepcopy(curr_state)
     actual_action = get_actual_action(action)
-
+    print(actual_action)
     if actual_action == "U":
         # Se pode subir, sobe. Senão, fica
         next_y = min(curr_state[1]+1,3)
@@ -67,7 +67,7 @@ def move(curr_state, action):
 
     if next_state == (2,2):
         # Se moveu pra (2,2) volta pro lugar
-        next_state==curr_state
+        next_state=curr_state
 
     return next_state
 
