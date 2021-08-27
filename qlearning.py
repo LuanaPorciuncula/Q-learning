@@ -28,7 +28,7 @@ def main():
     set_rewards(rewards_1, r_1)
     set_rewards(rewards_2, r_2)
 
-    # Começar exploração
+    
     
 
 def set_rewards(rewards, r):
@@ -50,7 +50,7 @@ def move(curr_state, action):
 
     if actual_action == "U":
         # Se pode subir, sobe. Senão, fica
-        next_y = min(curr_state[1]+1,4)
+        next_y = min(curr_state[1]+1,3)
         next_state = (curr_state[0], next_y)
     elif actual_action == "D":
         # Se pode descer, desce. Senão, fica
