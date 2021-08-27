@@ -28,7 +28,27 @@ def main():
     set_rewards(rewards_1, r_1)
     set_rewards(rewards_2, r_2)
 
-    print(move((2,1), "U"))
+    # Começar explorações
+    for i in range(100):
+        print("Exploração: ", i)
+        # Começar do estado inicial
+        curr_state = positions[0]
+        non_terminal_state = True
+
+        while (non_terminal_state):
+            # Escolher ação
+            action = choose_random_action()
+            # Pegar o estado resultante com base na ação escolhida
+            next_state = move(curr_state, action)
+
+            print(curr_state, action, next_state)
+
+            # Tornar proximo estado, estado atual
+            curr_state = next_state
+            # Se for (4,2) ou (4,3) chegou a um estado terminal
+            if curr_state in [positions[9], positions[10]]:
+                non_terminal_state = False
+
     
 
 def set_rewards(rewards, r):
@@ -47,7 +67,7 @@ def choose_random_action():
 def move(curr_state, action):
     next_state = copy.deepcopy(curr_state)
     actual_action = get_actual_action(action)
-    print(actual_action)
+    
     if actual_action == "U":
         # Se pode subir, sobe. Senão, fica
         next_y = min(curr_state[1]+1,3)
